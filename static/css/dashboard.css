@@ -1,0 +1,111 @@
+/* RailSync AI Dashboard Styles */
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand {
+    font-weight: 600;
+}
+
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.card-header {
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.train-item {
+    background-color: #fff;
+    transition: all 0.2s;
+}
+
+.train-item:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-1px);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.recommendation-item {
+    background-color: #fff;
+    transition: all 0.2s;
+}
+
+.recommendation-item:hover {
+    background-color: #f8f9fa;
+}
+
+.progress {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.alert {
+    border: none;
+    border-radius: 0.375rem;
+}
+
+.badge {
+    font-size: 0.75em;
+}
+
+.btn {
+    font-weight: 500;
+}
+
+.fas {
+    margin-right: 0.25rem;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.train-item, .recommendation-item {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 0.5rem;
+    }
+    
+    .card-body {
+        max-height: 300px !important;
+    }
+}
+```
+
+### 9. Configuration (config.py)
+
+```python
+import os
+
+class Config:
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'railsync-ai-sih2025-secret'
+    
+    # Database configuration (for future use)
+    DATABASE_URL = os.environ.get('DATABASE_URL') or 'sqlite:///railsync.db'
+    
+    # AI Model parameters
+    GA_POPULATION_SIZE = 50
+    GA_GENERATIONS = 30
+    GA_MUTATION_RATE = 0.1
+    
+    # System parameters
+    SAFETY_BUFFER_MINUTES = 5
+    CONFLICT_DISTANCE_THRESHOLD = 2  # km
+    MAX_TRAIN_SPEED = 160  # km/h
+    
+    # API settings
+    API_RATE_LIMIT = 100  # requests per minute
+    REAL_TIME_UPDATE_INTERVAL = 30  # seconds
