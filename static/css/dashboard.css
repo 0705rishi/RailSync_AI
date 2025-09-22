@@ -85,27 +85,28 @@ body {
 }
 ```
 
-### 9. Configuration (config.py)
+/* Metro Map Styles */
+#metro-container {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-```python
-import os
+.metro-train {
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+    transition: r 0.2s ease;
+}
 
-class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'railsync-ai-sih2025-secret'
-    
-    # Database configuration (for future use)
-    DATABASE_URL = os.environ.get('DATABASE_URL') or 'sqlite:///railsync.db'
-    
-    # AI Model parameters
-    GA_POPULATION_SIZE = 50
-    GA_GENERATIONS = 30
-    GA_MUTATION_RATE = 0.1
-    
-    # System parameters
-    SAFETY_BUFFER_MINUTES = 5
-    CONFLICT_DISTANCE_THRESHOLD = 2  # km
-    MAX_TRAIN_SPEED = 160  # km/h
-    
-    # API settings
-    API_RATE_LIMIT = 100  # requests per minute
-    REAL_TIME_UPDATE_INTERVAL = 30  # seconds
+.metro-train:hover {
+    r: 12;
+    filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.5));
+}
+
+/* Station hover effects */
+circle:hover {
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+}
+
+/* Animation controls */
+.btn-group {
+    margin-left: auto;
+}
